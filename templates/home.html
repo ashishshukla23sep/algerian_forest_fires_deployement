@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>Algerian forest fire API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<head> 
+          
+  <!-- CSS property to place div
+      side by side -->
+  <style> 
+      #leftbox {
+          float:left; 
+          background:ghostwhite;
+          width:45%;
+          height:480px;
+      }
+     
+      #rightbox{
+          float:right;
+          background:ghostwhite;
+          width:45%;
+          height:480px;
+      }
+      h1{
+          color:black;
+          text-align:center;
+      }
+     
+  </style> 
+  
+</head>
+
+<body>
+    <div class="row" id="boxes" >
+ 
+        <div class="span6" id = "leftbox">
+         <h1>Predict classes(Fire or Not fire)</h1>
+            <form action="{{ url_for('predict_clf')}}"method="post">
+                <input type="text" id='1' name="Day" placeholder="Day" required="required" /><br>
+                <input type="text" name="Month" placeholder="Month" required="required" /><br>
+                <input type="text" name="Temperature" placeholder="Temperature" required="required" /><br>
+                <input type="text" name="Relative Humidity in %" placeholder="Relative Humidity in %" required="required" /><br>
+                <input type="text" name="Wind speed in km/h" placeholder="Wind speed in km/h" required="required" /><br>
+                <input type="text" name="Rain in mm(0 to 16.8)" placeholder="Rain in mm" required="required" /><br>
+                <input type="text" name="Fine Fuel Moisture Code" placeholder="Fine Fuel Moisture Code" required="required" /><br>
+                <input type="text" name=" Duff Moisture Code" placeholder=" Duff Moisture Code" required="required" /><br>
+                <input type="text" name="Drought Code (DC)" placeholder="Drought Code (DC)" required="required" /><br>
+                <input type="text" name=" Initial Spread Index (ISI) index" placeholder=" Initial Spread Index (ISI) indexe" required="required" /><br>
+                <input type="text" name="Buildup Index (BUI) index" placeholder="Buildup Index (BUI) index" required="required" /><br>
+                <input type="text" name="Fire Weather Index (FWI) " placeholder="Fire Weather Index (FWI) " required="required" /><br>
+          
+                  <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+              </form>
+              <h1 style="background-color:Gray;">{{prediction_text1}}</h1>
+        </div>
+         
+         <div class="login" id = "rightbox">
+         <h1>Predict fire Weather Index</h1>
+          <form action="{{ url_for('predict_reg')}}"method="post">
+            <input type="text" name="Day" placeholder="Day" required="required" /><br>
+              <input type="text" name="Month" placeholder="Month" required="required" /><br>
+              <input type="text" name="Temperature" placeholder="Temperature" required="required" /><br>
+              <input type="text" name="Relative Humidity in %" placeholder="Relative Humidity in %" required="required" /><br>
+              <input type="text" name="Wind speed in km/h" placeholder="Wind speed in km/h" required="required" /><br>
+              <input type="text" name="Rain in mm(0 to 16.8)" placeholder="Rain in mm" required="required" /><br>
+              <input type="text" name="Fine Fuel Moisture Code" placeholder="Fine Fuel Moisture Code" required="required" /><br>
+              <input type="text" name=" Duff Moisture Code" placeholder=" Duff Moisture Code" required="required" /><br>
+              <input type="text" name="Drought Code (DC)" placeholder="Drought Code (DC)" required="required" /><br>
+              <input type="text" name=" Initial Spread Index (ISI) index" placeholder=" Initial Spread Index (ISI) indexe" required="required" /><br>
+              <input type="text" name="Buildup Index (BUI) index" placeholder="Buildup Index (BUI) index" required="required" /><br>
+              <input type="text" name="Classes(NOT FIRE=0 and FIRE=1) " placeholder="0 or 1 " required="required" /><br>
+              
+
+             
+      
+              <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+          </form>
+          <h1 style="background-color:Gray;">{{prediction_text2}}</h1>
+        </div>
+         
+        </div>
+        
+</body>
+</html>
