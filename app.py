@@ -2,10 +2,11 @@ import pickle
 from flask import Flask,request,app,jsonify,url_for,render_template
 import numpy as np
 import pandas as pd
+import joblib
 
 app=Flask(__name__)
-model_reg=pickle.load(open('reg_model_pkl','rb'))
-model_clf=pickle.load(open('clf_model.pkl','rb'))
+model_reg=joblib.load(open('reg_model_pkl','rb'))
+model_clf=joblib.load(open('clf_model_pkl','rb'))
 scalar_clf=pickle.load(open('scaler_clf.pkl','rb'))
 scalar_reg=pickle.load(open('scaler_reg.pkl','rb'))
 @app.route('/')
