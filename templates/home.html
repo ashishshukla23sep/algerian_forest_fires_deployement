@@ -57,6 +57,13 @@
                   <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
               </form>
               <h1 style="background-color:Gray;">{{prediction_text1}}</h1>
+
+
+              <form method="post"action="{{ url_for('predict_clf_bulk')}}" enctype = "multipart/form-data">
+
+                <input type="file" name="file" autocomplete="off" required><br><br>
+                <input type="submit">
+              </form>
         </div>
          
          <div class="login" id = "rightbox">
@@ -81,8 +88,15 @@
               <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
           </form>
           <h1 style="background-color:Gray;">{{prediction_text2}}</h1>
+
+          <form method="post"action="{{ url_for('predict_reg_bulk')}}" enctype = "multipart/form-data">
+
+            <input type="file" name="file" autocomplete="off" required><br><br>
+            <input type="submit">
+          </form>
         </div>
-         
+
+        
         </div>
         
 </body>
